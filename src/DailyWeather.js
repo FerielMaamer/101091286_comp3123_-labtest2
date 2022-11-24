@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 export default function DailyWeather(props){
     const {currentWeather, city, weatherData} = props;
-    
+
     const convertDate =(linuxDate)=>{
         let date = new Date(linuxDate*1000).toLocaleString('default', {weekday: 'long'});
         return date;
@@ -17,18 +17,19 @@ export default function DailyWeather(props){
             {
                 weatherData.length>0 & city.length>0 && 
                 <>
-                <p>{convertDate(currentWeather.dt)}</p>
-                <p>{convertFulldate(currentWeather.dt)}</p>
-                <p>{currentWeather.name} - {currentWeather.sys.country}</p>
+                <p><b>{convertDate(currentWeather.dt)}</b></p>
+                <p><b>{convertFulldate(currentWeather.dt)}</b></p>
+                <p><b>{currentWeather.name} - {currentWeather.sys.country}</b></p>
                 <img 
                             height={70}
                             width={100}
                             src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
                             alt="icon" 
+                            style={{alignContent:'center'}}
                         />
-                <p>{`${Math.floor(currentWeather.main.temp -273.15)}°C`}</p>
-                <p>Feels Like: {`${Math.floor(currentWeather.main.feels_like -273.15)}°C`}</p>
-                <p>{currentWeather.weather.main}</p>
+                <p><b>{`${Math.floor(currentWeather.main.temp -273.15)}°C`}</b></p>
+                <p><b>Feels Like: {`${Math.floor(currentWeather.main.feels_like -273.15)}°C`}</b></p>
+                <p><b>{currentWeather.weather.main}</b></p>
 
                 </>
             }

@@ -1,6 +1,14 @@
 .App {
   text-align: center;
 }
+.background {
+    background-Image: url("./img/background.jpg");
+    background-position: 'center';
+    background-size: 'cover';
+    background-repeat: 'no-repeat';
+    width: '100rem';
+    height: '100rem';
+}
 
 .App-logo {
   height: 40vmin;
@@ -44,7 +52,6 @@
 
 .flex-child-element {
   flex: 1;
-  border: 2px solid blueviolet;
 }
 
 .flex-child-element:first-child {

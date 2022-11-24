@@ -20,7 +20,6 @@ export default function Weather() {
         .then(res => {
             const weatherData = res.data["list"];
             setWeatherData(weatherData)
-            console.log(weatherData);
 
         })
     }
@@ -33,7 +32,6 @@ export default function Weather() {
             const lat = currentWeather.coord.lat;
             const lon = currentWeather.coord.lon;
             getWeatherData(lat, lon)
-            console.log(currentWeather);
         })
     }
 
@@ -49,15 +47,15 @@ export default function Weather() {
 
     return(
         <>
-        <div style={{width:"70%", height:"35rem" }}>
+        <div style={{width:"70%", height:"35rem", marginTop:"5rem"}}>
             <div className="flex-parent-element">
                 
                 
                 <div className="flex-child-element" style={{width:"35rem", height:"35rem" }}>
                     
-                        <Container >                      
+                        <Container style={{textAlign:'center' }}>                      
                     
-                        <Card className="justify-content-xs-start" >  
+                        <Card className="justify-content-xs-start" style={{ backgroundColor: 'transparent' }}>  
                         <input 
                             placeholder="City" 
                             onChange={(e) => setCity(e.target.value)}/>
@@ -85,24 +83,26 @@ export default function Weather() {
                         } 
                         </div>
                         </Card> 
-                        <Card className="justify-content-xs-start">            
+                        <Card className="justify-content-xs-start" style={{backgroundColor: 'transparent'}} >            
                         {
                             weatherData.length>0 & city.length>0 && 
                             <>
-                            <p>Min Temperature: {`${Math.floor(currentWeather.main.temp_min -273.15)}°C`}</p>
-                            <p>Max Temperature: {`${Math.floor(currentWeather.main.temp_max -273.15)}°C`}</p>
-                            <p>Wind Speed: {currentWeather.wind.speed} km/h</p>
-                            <p>Humidity: {currentWeather.main.humidity}%</p>
+                            <p><b>Min Temperature: </b>{`${Math.floor(currentWeather.main.temp_min -273.15)}°C`}</p>
+                            <p><b>Max Temperature: </b>{`${Math.floor(currentWeather.main.temp_max -273.15)}°C`}</p>
+                            <p><b>Wind Speed: </b>{currentWeather.wind.speed} km/h</p>
+                            <p><b>Humidity: </b>{currentWeather.main.humidity}%</p>
                             </>
                         }
                         </Card>
                     </Container>
                 
             </div>
-            <div>
-                <div style={{width:"60rem"}} >
-                    <Card className="flex-child-element">
-                        <DailyWeather currentWeather={currentWeather} city={city} weatherData={weatherData}></DailyWeather>
+            <div >
+                <div style={{width:"20rem"}} >
+                    <Card className="flex-child-element" style={{backgroundColor: 'transparent'}}>
+                        
+                        <DailyWeather                             
+                            currentWeather={currentWeather} city={city} weatherData={weatherData}></DailyWeather>
                     </Card>
                 </div>
             </div>
